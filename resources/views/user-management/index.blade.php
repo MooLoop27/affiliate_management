@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'User Management')
-@section('header', 'User Management')
+@section('title', 'Kelola Pengguna')
+@section('header', 'Kelola Pengguna')
 @section('header-actions')
 <a href="{{ route('user-management.create') }}" class="btn btn-primary">
-    <i class="bi bi-plus-lg me-1"></i> Add User
+    <i class="bi bi-plus-lg me-1"></i> Tambah Pengguna
 </a>
 @endsection
 
@@ -14,13 +14,13 @@
         <table class="table table-hover align-middle">
             <thead>
                 <tr>
-                    <th>Name</th>
+                    <th>Nama</th>
                     <th>Email</th>
                     <th>Role</th>
-                    <th>Phone</th>
+                    <th>Telepon</th>
                     <th>Status</th>
-                    <th>Joined</th>
-                    <th class="text-end">Actions</th>
+                    <th>Bergabung</th>
+                    <th class="text-end">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -50,18 +50,18 @@
                     <td>{{ $user->phone ?? '-' }}</td>
                     <td>
                         @if($user->is_active)
-                            <span class="badge bg-success">Active</span>
+                            <span class="badge bg-success">Aktif</span>
                         @else
-                            <span class="badge bg-secondary">Inactive</span>
+                            <span class="badge bg-secondary">Nonaktif</span>
                         @endif
                     </td>
                     <td>{{ $user->created_at->format('d/m/Y') }}</td>
                     <td class="text-end">
-                        <a href="{{ route('user-management.edit', $user) }}" class="btn btn-sm btn-outline-primary" title="Edit">
+                        <a href="{{ route('user-management.edit', $user) }}" class="btn btn-sm btn-outline-primary" title="Ubah">
                             <i class="bi bi-pencil"></i>
                         </a>
                         @if(!$user->isOwner())
-                        <button onclick="confirmAction('Delete {{ $user->name }}?', () => document.getElementById('delete-{{ $user->id }}').submit())" class="btn btn-sm btn-outline-danger" title="Delete">
+                        <button onclick="confirmAction('Hapus {{ $user->name }}?', () => document.getElementById('delete-{{ $user->id }}').submit())" class="btn btn-sm btn-outline-danger" title="Hapus">
                             <i class="bi bi-trash"></i>
                         </button>
                         <form id="delete-{{ $user->id }}" action="{{ route('user-management.destroy', $user) }}" method="POST" class="d-none">
@@ -75,8 +75,8 @@
                     <td colspan="7">
                         <div class="empty-state">
                             <i class="bi bi-shield-lock-fill"></i>
-                            <h5>No Users</h5>
-                            <p class="text-muted">No users found in the system.</p>
+                            <h5>Tidak Ada Pengguna</h5>
+                            <p class="text-muted">Tidak ada pengguna dalam sistem.</p>
                         </div>
                     </td>
                 </tr>

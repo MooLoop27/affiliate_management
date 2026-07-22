@@ -11,7 +11,7 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-start mb-3">
                     <div>
-                        <div class="stat-label mb-1">Total Transactions</div>
+                        <div class="stat-label mb-1">Total Transaksi</div>
                         <div class="stat-value">{{ number_format($totalTransactions) }}</div>
                     </div>
                     <div class="stat-icon bg-primary bg-opacity-10 text-primary">
@@ -20,7 +20,7 @@
                 </div>
                 <div class="text-muted small">
                     <i class="bi bi-arrow-up text-success me-1"></i>
-                    All time transactions
+                    Seluruh transaksi
                 </div>
             </div>
         </div>
@@ -31,7 +31,7 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-start mb-3">
                     <div>
-                        <div class="stat-label mb-1">Company Balance</div>
+                        <div class="stat-label mb-1">Saldo Perusahaan</div>
                         <div class="stat-value">Rp {{ number_format($totalCompanyBalance, 0, ',', '.') }}</div>
                     </div>
                     <div class="stat-icon bg-success bg-opacity-10 text-success">
@@ -40,7 +40,7 @@
                 </div>
                 <div class="text-muted small">
                     <i class="bi bi-arrow-up text-success me-1"></i>
-                    Total balance amount
+                    Total saldo
                 </div>
             </div>
         </div>
@@ -51,7 +51,7 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-start mb-3">
                     <div>
-                        <div class="stat-label mb-1">SG Commission</div>
+                        <div class="stat-label mb-1">Komisi SG</div>
                         <div class="stat-value">Rp {{ number_format($totalSgCommission, 0, ',', '.') }}</div>
                     </div>
                     <div class="stat-icon bg-info bg-opacity-10 text-info">
@@ -60,7 +60,7 @@
                 </div>
                 <div class="text-muted small">
                     <i class="bi bi-arrow-up text-success me-1"></i>
-                    Total SG commission
+                    Total komisi SG
                 </div>
             </div>
         </div>
@@ -71,7 +71,7 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-start mb-3">
                     <div>
-                        <div class="stat-label mb-1">Leader Commission</div>
+                        <div class="stat-label mb-1">Komisi Leader</div>
                         <div class="stat-value">Rp {{ number_format($totalLeaderCommission, 0, ',', '.') }}</div>
                     </div>
                     <div class="stat-icon bg-warning bg-opacity-10 text-warning">
@@ -80,7 +80,7 @@
                 </div>
                 <div class="text-muted small">
                     <i class="bi bi-arrow-up text-success me-1"></i>
-                    Total leader commission
+                    Total komisi leader
                 </div>
             </div>
         </div>
@@ -93,7 +93,7 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-start mb-3">
                     <div>
-                        <div class="stat-label mb-1">Recipient Commission</div>
+                        <div class="stat-label mb-1">Komisi Penerima</div>
                         <div class="stat-value">Rp {{ number_format($totalRecipientCommission, 0, ',', '.') }}</div>
                     </div>
                     <div class="stat-icon bg-danger bg-opacity-10 text-danger">
@@ -109,7 +109,7 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-start mb-3">
                     <div>
-                        <div class="stat-label mb-1">Pending Payments</div>
+                        <div class="stat-label mb-1">Pembayaran Pending</div>
                         <div class="stat-value text-warning">{{ number_format($pendingPayments) }}</div>
                     </div>
                     <div class="stat-icon bg-warning bg-opacity-10 text-warning">
@@ -125,7 +125,7 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-start mb-3">
                     <div>
-                        <div class="stat-label mb-1">Completed Payments</div>
+                        <div class="stat-label mb-1">Pembayaran Selesai</div>
                         <div class="stat-value text-success">{{ number_format($completedPayments) }}</div>
                     </div>
                     <div class="stat-icon bg-success bg-opacity-10 text-success">
@@ -141,21 +141,21 @@
     <div class="col-12 col-xl-8">
         <div class="table-container">
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <h5 class="fw-bold mb-0">Monthly Transactions ({{ now()->year }})</h5>
+                <h5 class="fw-bold mb-0">Transaksi Bulanan ({{ now()->year }})</h5>
             </div>
             <div class="table-responsive">
                 <table class="table table-hover align-middle">
                     <thead>
                         <tr>
-                            <th>Month</th>
-                            <th class="text-end">Transactions</th>
-                            <th class="text-end">Total Amount</th>
+                            <th>Bulan</th>
+                            <th class="text-end">Transaksi</th>
+                            <th class="text-end">Total</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse($monthlyTransactions as $monthData)
                         <tr>
-                            <td>{{ Carbon\Carbon::create()->month($monthData->month)->format('F') }}</td>
+                            <td>{{ Carbon\Carbon::create()->month($monthData->month)->isoFormat('MMMM') }}</td>
                             <td class="text-end">{{ number_format($monthData->total) }}</td>
                             <td class="text-end">Rp {{ number_format($monthData->total_amount, 0, ',', '.') }}</td>
                         </tr>
@@ -164,7 +164,7 @@
                             <td colspan="3">
                                 <div class="empty-state">
                                     <i class="bi bi-inbox"></i>
-                                    <h5>No transactions this year</h5>
+                                    <h5>Tidak ada transaksi tahun ini</h5>
                                 </div>
                             </td>
                         </tr>
@@ -178,8 +178,8 @@
     <div class="col-12 col-xl-4">
         <div class="table-container">
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <h5 class="fw-bold mb-0">Recent Transactions</h5>
-                <a href="{{ route('transactions.index') }}" class="btn btn-sm btn-outline-primary">View All</a>
+                <h5 class="fw-bold mb-0">Transaksi Terbaru</h5>
+                <a href="{{ route('transactions.index') }}" class="btn btn-sm btn-outline-primary">Lihat Semua</a>
             </div>
             <div class="list-group list-group-flush">
                 @forelse($recentTransactions as $transaction)
@@ -198,7 +198,7 @@
                     </div>
                 </a>
                 @empty
-                <div class="text-center text-muted py-3 small">No recent transactions</div>
+                <div class="text-center text-muted py-3 small">Tidak ada transaksi terbaru</div>
                 @endforelse
             </div>
         </div>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Edit Singapore Partner')
-@section('header', 'Edit Singapore Partner')
+@section('title', 'Ubah Partner Singapore')
+@section('header', 'Ubah Partner Singapore')
 
 @section('content')
 <div class="row justify-content-center">
@@ -12,12 +12,12 @@
 
                 <div class="row g-3">
                     <div class="col-12">
-                        <label class="form-label">SG Code</label>
+                        <label class="form-label">Kode SG</label>
                         <input type="text" class="form-control" value="{{ $singaporePartner->sg_code }}" disabled>
                     </div>
 
                     <div class="col-12">
-                        <label class="form-label">Partner Name <span class="text-danger">*</span></label>
+                        <label class="form-label">Nama Partner <span class="text-danger">*</span></label>
                         <input type="text" name="partner_name" class="form-control @error('partner_name') is-invalid @enderror" value="{{ old('partner_name', $singaporePartner->partner_name) }}" required>
                         @error('partner_name') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     </div>
@@ -37,23 +37,23 @@
                     <div class="col-md-6">
                         <label class="form-label">Status <span class="text-danger">*</span></label>
                         <select name="status" class="form-select @error('status') is-invalid @enderror" required>
-                            <option value="active" {{ old('status', $singaporePartner->status) === 'active' ? 'selected' : '' }}>Active</option>
-                            <option value="inactive" {{ old('status', $singaporePartner->status) === 'inactive' ? 'selected' : '' }}>Inactive</option>
+                            <option value="active" {{ old('status', $singaporePartner->status) === 'active' ? 'selected' : '' }}>Aktif</option>
+                            <option value="inactive" {{ old('status', $singaporePartner->status) === 'inactive' ? 'selected' : '' }}>Nonaktif</option>
                         </select>
                         @error('status') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     </div>
 
                     <div class="col-12">
-                        <label class="form-label">Notes</label>
+                        <label class="form-label">Catatan</label>
                         <textarea name="notes" class="form-control @error('notes') is-invalid @enderror" rows="3">{{ old('notes', $singaporePartner->notes) }}</textarea>
                         @error('notes') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     </div>
                 </div>
 
                 <div class="d-flex justify-content-end gap-2 mt-4">
-                    <a href="{{ route('singapore-partners.index') }}" class="btn btn-secondary">Cancel</a>
+                    <a href="{{ route('singapore-partners.index') }}" class="btn btn-secondary">Batal</a>
                     <button type="submit" class="btn btn-primary">
-                        <i class="bi bi-check-lg me-1"></i> Update Partner
+                        <i class="bi bi-check-lg me-1"></i> Perbarui Partner
                     </button>
                 </div>
             </form>

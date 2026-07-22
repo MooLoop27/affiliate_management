@@ -5,13 +5,13 @@
         </button>
         <span class="text-muted small">
             <i class="bi bi-calendar3 me-1"></i>
-            {{ now()->format('l, d F Y') }}
+            {{ now()->isoFormat('dddd, D MMMM YYYY') }}
         </span>
     </div>
 
     <div class="d-flex align-items-center gap-2">
         <!-- Theme Toggle -->
-        <button class="btn btn-sm btn-outline-secondary" id="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">
+        <button class="btn btn-sm btn-outline-secondary" id="theme-toggle" onclick="toggleTheme()" title="Ganti Tema">
             <i class="bi bi-moon-fill"></i>
         </button>
 
@@ -41,7 +41,7 @@
             <ul class="dropdown-menu dropdown-menu-end shadow-sm">
                 <li>
                     <a class="dropdown-item" href="{{ route('profile.edit') }}">
-                        <i class="bi bi-person-circle me-2"></i> Profile
+                        <i class="bi bi-person-circle me-2"></i> Profil
                     </a>
                 </li>
                 <li><hr class="dropdown-divider"></li>
@@ -49,7 +49,7 @@
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit" class="dropdown-item">
-                            <i class="bi bi-box-arrow-right me-2"></i> Logout
+                            <i class="bi bi-box-arrow-right me-2"></i> Keluar
                         </button>
                     </form>
                 </li>

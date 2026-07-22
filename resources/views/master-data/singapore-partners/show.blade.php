@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Singapore Partner Details')
-@section('header', 'Singapore Partner Details')
+@section('title', 'Detail Partner Singapore')
+@section('header', 'Detail Partner Singapore')
 @section('header-actions')
 <a href="{{ route('singapore-partners.edit', $singaporePartner) }}" class="btn btn-primary">
-    <i class="bi bi-pencil me-1"></i> Edit
+    <i class="bi bi-pencil me-1"></i> Ubah
 </a>
 <a href="{{ route('singapore-partners.index') }}" class="btn btn-secondary">
-    <i class="bi bi-arrow-left me-1"></i> Back
+    <i class="bi bi-arrow-left me-1"></i> Kembali
 </a>
 @endsection
 
@@ -16,14 +16,14 @@
     <div class="col-12 col-lg-4">
         <div class="card border-0 shadow-sm">
             <div class="card-body">
-                <h5 class="fw-bold mb-3">Partner Information</h5>
+                <h5 class="fw-bold mb-3">Informasi Partner</h5>
                 <table class="table table-sm">
                     <tr>
-                        <td class="text-muted">SG Code</td>
+                        <td class="text-muted">Kode SG</td>
                         <td class="fw-semibold"><span class="badge bg-primary">{{ $singaporePartner->sg_code }}</span></td>
                     </tr>
                     <tr>
-                        <td class="text-muted">Name</td>
+                        <td class="text-muted">Nama</td>
                         <td class="fw-semibold">{{ $singaporePartner->partner_name }}</td>
                     </tr>
                     <tr>
@@ -38,18 +38,18 @@
                         <td class="text-muted">Status</td>
                         <td>
                             @if($singaporePartner->status === 'active')
-                                <span class="badge bg-success">Active</span>
+                                <span class="badge bg-success">Aktif</span>
                             @else
-                                <span class="badge bg-secondary">Inactive</span>
+                                <span class="badge bg-secondary">Nonaktif</span>
                             @endif
                         </td>
                     </tr>
                     <tr>
-                        <td class="text-muted">Notes</td>
+                        <td class="text-muted">Catatan</td>
                         <td>{{ $singaporePartner->notes ?? '-' }}</td>
                     </tr>
                     <tr>
-                        <td class="text-muted">Created</td>
+                        <td class="text-muted">Dibuat</td>
                         <td>{{ $singaporePartner->created_at->format('d/m/Y') }}</td>
                     </tr>
                 </table>
@@ -60,16 +60,16 @@
     <div class="col-12 col-lg-8">
         <div class="card border-0 shadow-sm">
             <div class="card-body">
-                <h5 class="fw-bold mb-3">Transactions ({{ $singaporePartner->transactions->count() }})</h5>
+                <h5 class="fw-bold mb-3">Transaksi ({{ $singaporePartner->transactions->count() }})</h5>
                 <div class="table-responsive">
                     <table class="table table-hover align-middle">
                         <thead>
                             <tr>
-                                <th>Transaction Code</th>
-                                <th>Date</th>
+                                <th>Kode Transaksi</th>
+                                <th>Tanggal</th>
                                 <th>Leader</th>
-                                <th class="text-end">Amount</th>
-                                <th class="text-end">Commission</th>
+                                <th class="text-end">Jumlah</th>
+                                <th class="text-end">Komisi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -83,7 +83,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="5" class="text-center text-muted py-3">No transactions found</td>
+                                <td colspan="5" class="text-center text-muted py-3">Tidak ada transaksi</td>
                             </tr>
                             @endforelse
                         </tbody>

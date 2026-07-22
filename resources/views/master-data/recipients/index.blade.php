@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Commission Recipients')
-@section('header', 'Commission Recipients')
+@section('title', 'Penerima Komisi')
+@section('header', 'Penerima Komisi')
 @section('header-actions')
 <a href="{{ route('recipients.create') }}" class="btn btn-primary">
-    <i class="bi bi-plus-lg me-1"></i> Add Recipient
+    <i class="bi bi-plus-lg me-1"></i> Tambah Penerima
 </a>
 @endsection
 
@@ -14,14 +14,14 @@
         <table class="table table-hover align-middle">
             <thead>
                 <tr>
-                    <th>Code</th>
-                    <th>Recipient Name</th>
+                    <th>Kode</th>
+                    <th>Nama Penerima</th>
                     <th>WhatsApp</th>
                     <th>Bank</th>
-                    <th>Account</th>
+                    <th>No. Rekening</th>
                     <th>Status</th>
-                    <th>Commissions</th>
-                    <th class="text-end">Actions</th>
+                    <th>Komisi</th>
+                    <th class="text-end">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,20 +34,20 @@
                     <td>{{ $recipient->bank_account_number ?? '-' }}</td>
                     <td>
                         @if($recipient->status === 'active')
-                            <span class="badge bg-success">Active</span>
+                            <span class="badge bg-success">Aktif</span>
                         @else
-                            <span class="badge bg-secondary">Inactive</span>
+                            <span class="badge bg-secondary">Nonaktif</span>
                         @endif
                     </td>
                     <td>{{ number_format($recipient->commission_details_count) }}</td>
                     <td class="text-end">
-                        <a href="{{ route('recipients.show', $recipient) }}" class="btn btn-sm btn-outline-info" title="View">
+                        <a href="{{ route('recipients.show', $recipient) }}" class="btn btn-sm btn-outline-info" title="Detail">
                             <i class="bi bi-eye"></i>
                         </a>
-                        <a href="{{ route('recipients.edit', $recipient) }}" class="btn btn-sm btn-outline-primary" title="Edit">
+                        <a href="{{ route('recipients.edit', $recipient) }}" class="btn btn-sm btn-outline-primary" title="Ubah">
                             <i class="bi bi-pencil"></i>
                         </a>
-                        <button onclick="confirmAction('Delete {{ $recipient->recipient_name }}?', () => document.getElementById('delete-{{ $recipient->id }}').submit())" class="btn btn-sm btn-outline-danger" title="Delete">
+                        <button onclick="confirmAction('Hapus {{ $recipient->recipient_name }}?', () => document.getElementById('delete-{{ $recipient->id }}').submit())" class="btn btn-sm btn-outline-danger" title="Hapus">
                             <i class="bi bi-trash"></i>
                         </button>
                         <form id="delete-{{ $recipient->id }}" action="{{ route('recipients.destroy', $recipient) }}" method="POST" class="d-none">
@@ -60,10 +60,10 @@
                     <td colspan="8">
                         <div class="empty-state">
                             <i class="bi bi-person-badge"></i>
-                            <h5>No Commission Recipients</h5>
-                            <p class="text-muted">Get started by adding your first recipient.</p>
+                            <h5>Belum Ada Penerima Komisi</h5>
+                            <p class="text-muted">Mulai dengan menambahkan penerima komisi pertama Anda.</p>
                             <a href="{{ route('recipients.create') }}" class="btn btn-primary">
-                                <i class="bi bi-plus-lg me-1"></i> Add Recipient
+                                <i class="bi bi-plus-lg me-1"></i> Tambah Penerima
                             </a>
                         </div>
                     </td>

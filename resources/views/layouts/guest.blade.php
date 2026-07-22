@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-bs-theme="light">
+<html lang="id" data-bs-theme="light">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Affiliate Commission System') }}</title>
+    <title>{{ config('app.name', 'Sistem Komisi Afiliasi') }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,8 +26,8 @@
                         <div class="d-inline-flex align-items-center justify-content-center bg-primary text-white rounded-3 p-3 mb-3" style="width: 64px; height: 64px;">
                             <i class="bi bi-currency-exchange fs-3"></i>
                         </div>
-                        <h4 class="fw-bold mb-1">{{ config('app.name', 'Affiliate Commission System') }}</h4>
-                        <p class="text-muted small">Commission Management Platform</p>
+                        <h4 class="fw-bold mb-1">{{ config('app.name', 'Sistem Komisi Afiliasi') }}</h4>
+                        <p class="text-muted small">Platform Manajemen Komisi</p>
                     </div>
 
                     <div class="card border-0 shadow-sm">
@@ -37,7 +37,7 @@
                     </div>
 
                     <div class="text-center mt-3">
-                        <p class="text-muted small mb-0">&copy; {{ date('Y') }} {{ config('app.name') }}. All rights reserved.</p>
+                        <p class="text-muted small mb-0">&copy; {{ date('Y') }} {{ config('app.name') }}. Hak Cipta Dilindungi.</p>
                     </div>
                 </div>
             </div>

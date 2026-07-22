@@ -1,34 +1,34 @@
 @extends('layouts.app')
 
-@section('title', 'Activity Logs')
-@section('header', 'Activity Logs')
+@section('title', 'Log Aktivitas')
+@section('header', 'Log Aktivitas')
 
 @section('content')
 <div class="search-filter-bar">
     <form method="GET" action="{{ route('activity-logs.index') }}">
         <div class="row g-2 align-items-end">
             <div class="col-12 col-md-4">
-                <label class="form-label small fw-semibold">Search</label>
+                <label class="form-label small fw-semibold">Cari</label>
                 <div class="input-group input-group-sm">
                     <span class="input-group-text"><i class="bi bi-search"></i></span>
-                    <input type="text" name="search" class="form-control" placeholder="Search activity..." value="{{ request('search') }}">
+                    <input type="text" name="search" class="form-control" placeholder="Cari aktivitas..." value="{{ request('search') }}">
                 </div>
             </div>
             <div class="col-6 col-md-2">
-                <label class="form-label small fw-semibold">User</label>
+                <label class="form-label small fw-semibold">Pengguna</label>
                 <select name="user_id" class="form-select form-select-sm">
-                    <option value="">All Users</option>
+                    <option value="">Semua Pengguna</option>
                     @foreach($users as $user)
                     <option value="{{ $user->id }}" {{ request('user_id') == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
                     @endforeach
                 </select>
             </div>
             <div class="col-6 col-md-2">
-                <label class="form-label small fw-semibold">Date From</label>
+                <label class="form-label small fw-semibold">Tanggal Dari</label>
                 <input type="date" name="date_from" class="form-control form-control-sm" value="{{ request('date_from') }}">
             </div>
             <div class="col-6 col-md-2">
-                <label class="form-label small fw-semibold">Date To</label>
+                <label class="form-label small fw-semibold">Tanggal Sampai</label>
                 <input type="date" name="date_to" class="form-control form-control-sm" value="{{ request('date_to') }}">
             </div>
             <div class="col-6 col-md-2">
@@ -43,11 +43,11 @@
         <table class="table table-hover align-middle">
             <thead>
                 <tr>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>User</th>
-                    <th>Activity</th>
-                    <th>IP Address</th>
+                    <th>Tanggal</th>
+                    <th>Waktu</th>
+                    <th>Pengguna</th>
+                    <th>Aktivitas</th>
+                    <th>Alamat IP</th>
                     <th>Browser</th>
                 </tr>
             </thead>
@@ -61,7 +61,7 @@
                             <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 28px; height: 28px; font-size: 0.7rem; font-weight: 600;">
                                 {{ substr($log->user?->name ?? '?', 0, 1) }}
                             </div>
-                            <span class="fw-semibold small">{{ $log->user?->name ?? 'Unknown' }}</span>
+                            <span class="fw-semibold small">{{ $log->user?->name ?? 'Tidak Diketahui' }}</span>
                         </div>
                     </td>
                     <td>{{ $log->activity }}</td>
@@ -75,8 +75,8 @@
                     <td colspan="6">
                         <div class="empty-state">
                             <i class="bi bi-clock-history"></i>
-                            <h5>No Activity Logs</h5>
-                            <p class="text-muted">No activity has been recorded yet.</p>
+                            <h5>Belum Ada Log Aktivitas</h5>
+                            <p class="text-muted">Belum ada aktivitas yang tercatat.</p>
                         </div>
                     </td>
                 </tr>

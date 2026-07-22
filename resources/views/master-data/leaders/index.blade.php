@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Leaders')
-@section('header', 'Leaders')
+@section('title', 'Leader')
+@section('header', 'Leader')
 @section('header-actions')
 <a href="{{ route('leaders.create') }}" class="btn btn-primary">
-    <i class="bi bi-plus-lg me-1"></i> Add Leader
+    <i class="bi bi-plus-lg me-1"></i> Tambah Leader
 </a>
 @endsection
 
@@ -14,13 +14,13 @@
         <table class="table table-hover align-middle">
             <thead>
                 <tr>
-                    <th>Code</th>
-                    <th>Leader Name</th>
+                    <th>Kode</th>
+                    <th>Nama Leader</th>
                     <th>WhatsApp</th>
                     <th>Status</th>
-                    <th>Transactions</th>
-                    <th>Recipients</th>
-                    <th class="text-end">Actions</th>
+                    <th>Transaksi</th>
+                    <th>Penerima</th>
+                    <th class="text-end">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,21 +31,21 @@
                     <td>{{ $leader->whatsapp ?? '-' }}</td>
                     <td>
                         @if($leader->status === 'active')
-                            <span class="badge bg-success">Active</span>
+                            <span class="badge bg-success">Aktif</span>
                         @else
-                            <span class="badge bg-secondary">Inactive</span>
+                            <span class="badge bg-secondary">Nonaktif</span>
                         @endif
                     </td>
                     <td>{{ number_format($leader->transactions_count) }}</td>
                     <td>{{ number_format($leader->recipients_count) }}</td>
                     <td class="text-end">
-                        <a href="{{ route('leaders.show', $leader) }}" class="btn btn-sm btn-outline-info" title="View">
+                        <a href="{{ route('leaders.show', $leader) }}" class="btn btn-sm btn-outline-info" title="Detail">
                             <i class="bi bi-eye"></i>
                         </a>
-                        <a href="{{ route('leaders.edit', $leader) }}" class="btn btn-sm btn-outline-primary" title="Edit">
+                        <a href="{{ route('leaders.edit', $leader) }}" class="btn btn-sm btn-outline-primary" title="Ubah">
                             <i class="bi bi-pencil"></i>
                         </a>
-                        <button onclick="confirmAction('Delete {{ $leader->leader_name }}?', () => document.getElementById('delete-{{ $leader->id }}').submit())" class="btn btn-sm btn-outline-danger" title="Delete">
+                        <button onclick="confirmAction('Hapus {{ $leader->leader_name }}?', () => document.getElementById('delete-{{ $leader->id }}').submit())" class="btn btn-sm btn-outline-danger" title="Hapus">
                             <i class="bi bi-trash"></i>
                         </button>
                         <form id="delete-{{ $leader->id }}" action="{{ route('leaders.destroy', $leader) }}" method="POST" class="d-none">
@@ -58,10 +58,10 @@
                     <td colspan="7">
                         <div class="empty-state">
                             <i class="bi bi-people-fill"></i>
-                            <h5>No Leaders</h5>
-                            <p class="text-muted">Get started by adding your first leader.</p>
+                            <h5>Belum Ada Leader</h5>
+                            <p class="text-muted">Mulai dengan menambahkan leader pertama Anda.</p>
                             <a href="{{ route('leaders.create') }}" class="btn btn-primary">
-                                <i class="bi bi-plus-lg me-1"></i> Add Leader
+                                <i class="bi bi-plus-lg me-1"></i> Tambah Leader
                             </a>
                         </div>
                     </td>

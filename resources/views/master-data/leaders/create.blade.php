@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Create Leader')
-@section('header', 'Create Leader')
+@section('title', 'Tambah Leader')
+@section('header', 'Tambah Leader')
 
 @section('content')
 <div class="row justify-content-center">
@@ -12,7 +12,7 @@
 
                 <div class="row g-3">
                     <div class="col-12">
-                        <label class="form-label">Leader Name <span class="text-danger">*</span></label>
+                        <label class="form-label">Nama Leader <span class="text-danger">*</span></label>
                         <input type="text" name="leader_name" class="form-control @error('leader_name') is-invalid @enderror" value="{{ old('leader_name') }}" required>
                         @error('leader_name') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     </div>
@@ -26,23 +26,23 @@
                     <div class="col-md-6">
                         <label class="form-label">Status <span class="text-danger">*</span></label>
                         <select name="status" class="form-select @error('status') is-invalid @enderror" required>
-                            <option value="active" {{ old('status') === 'active' ? 'selected' : '' }}>Active</option>
-                            <option value="inactive" {{ old('status') === 'inactive' ? 'selected' : '' }}>Inactive</option>
+                            <option value="active" {{ old('status') === 'active' ? 'selected' : '' }}>Aktif</option>
+                            <option value="inactive" {{ old('status') === 'inactive' ? 'selected' : '' }}>Nonaktif</option>
                         </select>
                         @error('status') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     </div>
 
                     <div class="col-12">
-                        <label class="form-label">Notes</label>
+                        <label class="form-label">Catatan</label>
                         <textarea name="notes" class="form-control @error('notes') is-invalid @enderror" rows="3">{{ old('notes') }}</textarea>
                         @error('notes') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     </div>
                 </div>
 
                 <div class="d-flex justify-content-end gap-2 mt-4">
-                    <a href="{{ route('leaders.index') }}" class="btn btn-secondary">Cancel</a>
+                    <a href="{{ route('leaders.index') }}" class="btn btn-secondary">Batal</a>
                     <button type="submit" class="btn btn-primary">
-                        <i class="bi bi-check-lg me-1"></i> Create Leader
+                        <i class="bi bi-check-lg me-1"></i> Simpan Leader
                     </button>
                 </div>
             </form>
